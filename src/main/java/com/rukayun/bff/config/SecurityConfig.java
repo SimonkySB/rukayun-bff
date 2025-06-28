@@ -2,6 +2,7 @@ package com.rukayun.bff.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,7 +20,13 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> 
                 authorize
-                    .requestMatchers("/").permitAll() 
+                    .requestMatchers("/").permitAll()
+                    .requestMatchers("/comunas").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/animales/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/organizaciones/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/adopciones/estados").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/seguimientos/estados").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/seguimientos/tipos").permitAll()
                     .anyRequest().authenticated()
             )
 			.oauth2ResourceServer((oauth2) -> 
