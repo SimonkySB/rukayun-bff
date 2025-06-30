@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -81,5 +80,36 @@ public class UsuarioController {
                 .toEntity(String.class);
     }
 
-    
+    @GetMapping("/perfil")
+    public Mono<ResponseEntity<String>> perfil() {
+        String fullUrl = baseUrl + url + "/perfil";
+        return webClientBuilder.build()
+                .get()
+                .uri(URI.create(fullUrl))
+                .retrieve()
+                .toEntity(String.class);
+    }
+
+    @PutMapping("/perfil")
+    public Mono<ResponseEntity<String>> editarPertil(@RequestBody String body) {
+        String fullUrl = baseUrl + url + "/perfil" ;
+        return webClientBuilder.build()
+                .put()
+                .uri(fullUrl)
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(body)
+                .retrieve()
+                .toEntity(String.class);
+    }
+
+    @PostMapping("/perfil/verificar")
+    public Mono<ResponseEntity<String>> verificarPerfil() {
+        String fullUrl = baseUrl + url + "/perfil/verificar" ;
+        return webClientBuilder.build()
+                .put()
+                .uri(fullUrl)
+                .contentType(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .toEntity(String.class);
+    }
 }

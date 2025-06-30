@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -107,6 +106,28 @@ public class OrganizacionController {
         return webClientBuilder.build()
                 .delete()
                 .uri(URI.create(fullUrl))
+                .retrieve()
+                .toEntity(String.class);
+    }
+
+    @GetMapping("/me")
+    public Mono<ResponseEntity<String>> listOrganizacionesOwner() {
+        String fullUrl = baseUrl + url + "/me";
+        return webClientBuilder.build()
+                .get()
+                .uri(URI.create(fullUrl))
+                .retrieve()
+                .toEntity(String.class);
+    }
+
+    @PutMapping("/{id}/me")
+    public Mono<ResponseEntity<String>> editarOrganizacionOwner(@PathVariable String id, @RequestBody String body) {
+        String fullUrl = baseUrl + url + "/" + id + "/me";
+        return webClientBuilder.build()
+                .put()
+                .uri(fullUrl)
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(body)
                 .retrieve()
                 .toEntity(String.class);
     }

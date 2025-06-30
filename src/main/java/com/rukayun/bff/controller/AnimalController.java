@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.MultipartBodyBuilder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -205,4 +204,13 @@ public class AnimalController {
     }
 
 
+    @GetMapping("/me")
+	public Mono<ResponseEntity<String>> listAnimalesUsuario() {
+        String fullUrl = baseUrl + url + "/me";
+		return webClientBuilder.build()
+            .get()
+            .uri(URI.create(fullUrl))
+            .retrieve()
+            .toEntity(String.class);
+	}
 }
