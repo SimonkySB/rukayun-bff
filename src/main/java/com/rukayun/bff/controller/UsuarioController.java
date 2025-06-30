@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin
+
 public class UsuarioController {
     
     @Autowired

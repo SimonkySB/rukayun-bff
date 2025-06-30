@@ -21,7 +21,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/organizaciones")
-@CrossOrigin
+
 public class OrganizacionController {
     
     @Autowired

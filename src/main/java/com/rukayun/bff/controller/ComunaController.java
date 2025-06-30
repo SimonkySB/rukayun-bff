@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/comunas")
-@CrossOrigin
+
 public class ComunaController {
     
     @Autowired

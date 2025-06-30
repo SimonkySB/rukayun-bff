@@ -27,7 +27,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/animales")
-@CrossOrigin
+
 public class AnimalController {
     @Autowired
     private WebClient.Builder webClientBuilder;

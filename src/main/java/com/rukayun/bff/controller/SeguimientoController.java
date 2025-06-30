@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/seguimientos")
-@CrossOrigin
+
 public class SeguimientoController {
     @Autowired
     private WebClient.Builder webClientBuilder;

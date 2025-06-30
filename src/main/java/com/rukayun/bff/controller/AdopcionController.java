@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/adopciones")
-@CrossOrigin
+
 public class AdopcionController {
     @Autowired
     private WebClient.Builder webClientBuilder;
