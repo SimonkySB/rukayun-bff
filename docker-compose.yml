@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  bff:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bff
+    ports:
+      - "8080:8080"
