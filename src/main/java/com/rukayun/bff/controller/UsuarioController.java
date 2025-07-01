@@ -106,7 +106,7 @@ public class UsuarioController {
     public Mono<ResponseEntity<String>> verificarPerfil() {
         String fullUrl = baseUrl + url + "/perfil/verificar" ;
         return webClientBuilder.build()
-                .put()
+                .post()
                 .uri(fullUrl)
                 .contentType(MediaType.APPLICATION_JSON)
                 .retrieve()
